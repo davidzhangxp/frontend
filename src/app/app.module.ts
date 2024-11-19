@@ -8,20 +8,31 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { SettingComponent } from './setting/setting.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { MainbarComponent } from './mainbar/mainbar.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    TicketListComponent
+    TicketListComponent,
+    SettingComponent,
+    MainbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

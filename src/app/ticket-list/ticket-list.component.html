@@ -1,1 +1,62 @@
-<p>ticket-list works!</p>
+
+
+<div>
+    <button (click)="addticket()">Import ticket</button>
+  </div>
+
+<div>
+  <button (click)="exportexcel()">Export report</button>
+</div>
+
+
+
+<div class="list" >
+  <table class="table" id="excel-table" *ngIf="report_heads">
+      <thead>
+        <tr >
+          <th scope="col" >ID</th>
+          <th scope="col" *ngFor="let head of report_heads">{{head}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of tickets">
+          <th scope="row">{{data.id}}</th>
+          <!-- <td *ngFor="let item of data | keyvalue">{{item.value}}</td> -->
+          <td *ngIf="report_heads.includes('ticket_number')"><a [title]="data.ticket_number + 'details'" [routerLink]="['/tickets', data.id]">{{data.ticket_number}}</a></td>
+          <td *ngIf="report_heads.includes('server_sn')">{{data.server_sn}}</td>
+          <td *ngIf="report_heads.includes('ip')">{{data.ip}}</td>
+          <td *ngIf="report_heads.includes('start_date')">{{data.start_date}}</td>
+          <td *ngIf="report_heads.includes('close_date')">{{data.close_date}}</td>
+          <td *ngIf="report_heads.includes('product_name')">{{data.product_name}}</td>
+          <td *ngIf="report_heads.includes('model')">{{data.model}}</td>
+          <td *ngIf="report_heads.includes('location')">{{data.location}}</td>
+        
+          <td *ngIf="report_heads.includes('failure_type')">{{data.failure_type}}</td>
+          <td *ngIf="report_heads.includes('if_change_part')">{{data.if_change_part}}</td>
+          <td *ngIf="report_heads.includes('foxconn_pn')">{{data.foxconn_pn}}</td>
+          <td *ngIf="report_heads.includes('old_manufacture')">{{data.old_manufacture}}</td>
+          <td *ngIf="report_heads.includes('old_part_pn')">{{data.old_part_pn}}</td>
+          <td *ngIf="report_heads.includes('new_manufacture')">{{data.new_manufacture}}</td>
+          <td *ngIf="report_heads.includes('new_pn')">{{data.new_pn}}</td>
+          <td *ngIf="report_heads.includes('old_part_sn')">{{data.old_part_sn}}</td>
+          <td *ngIf="report_heads.includes('good_part_sn')">{{data.good_part_sn}}</td>
+          <td *ngIf="report_heads.includes('part_position')">{{data.part_position}}</td>
+          <td *ngIf="report_heads.includes('error_description')">{{data.error_description}}</td>
+          <td *ngIf="report_heads.includes('feedback')">{{data.feedback}}</td>
+          <td *ngIf="report_heads.includes('tech')">{{data.tech}}</td>
+          <td *ngIf="report_heads.includes('repair_date')">{{data.repair_date}}</td>
+          <td *ngIf="report_heads.includes('period')">{{data.period}}</td>
+          <td *ngIf="report_heads.includes('status')">{{data.status}}</td>
+          <td *ngIf="report_heads.includes('requester')">{{data.requester}}</td>
+          <td *ngIf="report_heads.includes('notes')">{{data.notes}}</td>
+          <td>
+            <button type="button" (click)="remove_ticket(data.id)">
+              <i class="fa fa-times"></i>
+            </button>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    </div>
+

@@ -1,0 +1,12 @@
+.mainbar{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 5px;
+    border: 0.1rem solid gray;
+}
+.bar_item{
+    width: 20%;
+    font-size: 15px;
+    margin-top: 5px;
+}

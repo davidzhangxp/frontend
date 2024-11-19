@@ -1,0 +1,11 @@
+<form class="mainbar" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="bar_item" *ngFor="let option of options">
+      <input type="checkbox" [value]="option.value" (change)="onCheckboxChange($event, option.value)" [checked]="option.checked">
+      <label>{{ option.value }}</label>
+    </div>
+  
+    <!-- <button type="submit">Submit</button> -->
+  </form>
+  
+  <p>Selected options: {{ myForm.value.selectedOptions }}</p>
+  <app-ticket-list [report_heads] = "myForm.value.selectedOptions"></app-ticket-list>

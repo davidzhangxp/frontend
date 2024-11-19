@@ -55,6 +55,34 @@ export const report_titles: string[] = [
         "failure_type"
         
 ]
+export const title_list = [
+    {value:'ticket_number',checked:true},
+    {value:'server_sn',checked:true},
+    {value:'ip',checked:true},
+    {value:'start_date',checked:true},
+    {value:'close_date',checked:true},
+    {value:'product_name',checked:true},
+    {value:'model',checked:true},
+    {value:'location',checked:true},
+    {value:'failure_type',checked:true},
+    {value:'if_change_part',checked:true},
+    {value:'foxconn_pn',checked:false},
+    {value:'old_manufacture',checked:false},
+    {value:'old_part_pn',checked:false},
+    {value:'new_manufacture',checked:false},
+    {value:'new_pn',checked:false},
+    {value:'old_part_sn',checked:false},
+    {value:'good_part_sn',checked:false},
+    {value:'part_position',checked:false},
+    {value:'error_description',checked:false},
+    {value:'feedback',checked:false},
+    {value:'tech',checked:false},
+    {value:'repair_date',checked:false},
+    {value:'period',checked:false},
+    {value:'status',checked:false},
+    {value:'requester',checked:false},
+    {value:'notes',checked:false},
+]
 
 export const tickets_list:Ticket[] = [
     {    id: '1',
