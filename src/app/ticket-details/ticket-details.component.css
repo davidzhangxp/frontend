@@ -1,0 +1,17 @@
+.detail{
+    display: flex;
+    justify-content: start;
+
+}
+.key{
+    width: 20%;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 2px;
+    padding-left: 10px;
+}
+.value{
+    font-size: 15px;
+    margin: 2px;
+}
+

@@ -9,9 +9,16 @@
     --shadow-color:#e8e8e8;
 
 }
-body{
-    margin: 0;
-}
+html, body {
+  height: 100%;
+  
+  margin:0; /* new */
+  width: 100vw; /* fallback for older browsers */
+  width: 98cqw;
+  
+  
+  }
+
 
 h1{
     font-size: 32px;
@@ -127,4 +134,16 @@ a:hover{
     height: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
+  }
+
+  /*footer*/
+  .ft-legal{
+    width: 100vw; /* fallback for older browsers */
+  width: 100cqw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
   }

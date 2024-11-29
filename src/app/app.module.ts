@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SettingComponent } from './setting/setting.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { MainbarComponent } from './mainbar/mainbar.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
+import { ImportTicketComponent } from './import-ticket/import-ticket.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MainbarComponent } from './mainbar/mainbar.component';
     RegisterComponent,
     TicketListComponent,
     SettingComponent,
-    MainbarComponent
+    MainbarComponent,
+    TicketDetailsComponent,
+    ImportTicketComponent
   ],
   imports: [
     BrowserModule,

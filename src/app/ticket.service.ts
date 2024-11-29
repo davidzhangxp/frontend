@@ -10,6 +10,7 @@ export class TicketService {
 
   excelData:Ticket[] = []
   apiurl = "http://localhost:8080/api/ticket/"
+  ticketInfo:any
 
   constructor(private http:HttpClient) { }
 
@@ -38,6 +39,19 @@ export class TicketService {
       console.log(data)
     })
   }
+
+  getTickets(){
+    return this.http.get<any[]>(this.apiurl + 'tickets')
+  }
+
+ getTicketInfo(id:string){
+  
+  this.http.get<any[]>(this.apiurl + "tickets").subscribe((data)=>{
+    this.ticketInfo = data.find((item)=>item.id === id)
+  })
+
+  return this.ticketInfo
+ }
 
 
 

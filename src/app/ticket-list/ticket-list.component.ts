@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { tickets_list } from '../tickets';
+import { TicketService } from '../ticket.service';
+import * as XLSX from 'xlsx'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-list',
@@ -10,16 +13,31 @@ export class TicketListComponent {
   
 
   @Input() report_heads: string[] | undefined;
+  @Input() tickets:any[] | undefined
+
+  fileName = "Breakfix_report.xlsx"
 
   // report_heads:string[] = []
-  tickets:any[] =tickets_list
+  // tickets:any =tickets_list
 
-  constructor(){}
+  constructor(private ts: TicketService, private router: Router){
+    // this.ts.getTickets().subscribe((data)=>{this.tickets=data})
+  }
 
   addticket(){
-
+    this.router.navigate(['/import'])
   }
   exportexcel(){
+         /* pass here the table id */
+         let element = document.getElementById('excel-table');
+         const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+      
+         /* generate workbook and add the worksheet */
+         const wb: XLSX.WorkBook = XLSX.utils.book_new();
+         XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+      
+         /* save to file */  
+         XLSX.writeFile(wb, this.fileName);
 
   }
   remove_ticket(id:string){

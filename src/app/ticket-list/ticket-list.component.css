@@ -1,12 +1,39 @@
+.input_btn{
+  
+  float: right;
+  display: flex;
+  /* align-items: flex-end; */
+  justify-content: flex-end;
+}
+.input_btn button{
+  color: white;
+  /* background-color: lightskyblue; */
+  background-color: orange;
+  border: none;
+  border-radius: 4px;
+  margin: 2px 10px;
+  padding: 5px 30px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.list{
+  width: 100%;
+  margin: 2px;
+}
 #excel-table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
+    border: 0.1rem dotted grey;
     width: 100%;
+    display: block;
+    overflow: auto;
+    height: 310px;
   }
   
   #excel-table td, #excel-table th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 5px;
   }
   
   #excel-table tr:nth-child(even){background-color: #f2f2f2;}
@@ -14,9 +41,13 @@
   #excel-table tr:hover {background-color: #ddd;}
   
   #excel-table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     text-align: left;
-    background-color: #04AA6D;
+    /* background-color: #04AA6D; */
+    background-color: grey;
     color: white;
+  }
+  #excel-table td {
+    font-size: 12px;
   }

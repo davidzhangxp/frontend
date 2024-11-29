@@ -1,4 +1,4 @@
-<form class="mainbar" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<form class="checkbar" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="bar_item" *ngFor="let option of options">
       <input type="checkbox" [value]="option.value" (change)="onCheckboxChange($event, option.value)" [checked]="option.checked">
       <label>{{ option.value }}</label>
@@ -7,5 +7,40 @@
     <!-- <button type="submit">Submit</button> -->
   </form>
   
-  <p>Selected options: {{ myForm.value.selectedOptions }}</p>
-  <app-ticket-list [report_heads] = "myForm.value.selectedOptions"></app-ticket-list>
+
+<div class="filterbar">
+  <form [formGroup]="filterForm" (ngSubmit)="ticketFilter()">
+
+      <div class="unit">
+        <label for="name">Status:</label>
+        <select formControlName="status">
+          <option disabled selected value="">Select Status</option>
+          <option *ngFor="let s of status" [value]="s">{{s}}</option>
+        </select>
+        
+      </div>
+      <div class="unit">
+        <label for="id">ID:</label>
+        <input type="text" id="id" formControlName="id" placeholder="Please enter ticket number">
+      </div>
+      <div class="unit">
+        <label for="content">Content:</label>
+        <input type="text" id="content" formControlName="content" placeholder="Please enter the content of ticket">
+      </div>
+      <div class="unit">
+        <label for="tech">Tech:</label>
+        <input type="text" id="tech" formControlName="tech" placeholder="Please enter the tech name">
+      </div>
+      <div class="unit">
+        <label for="date">Date:</label>
+        <input type="date" id="date" formControlName="date">
+      </div>
+
+    <div class="btn">
+      <button type="submit" >Search</button>
+    </div>
+  </form>
+</div>
+
+
+  <app-ticket-list [report_heads] = "myForm.value.selectedOptions" [tickets]="tickets"></app-ticket-list>
