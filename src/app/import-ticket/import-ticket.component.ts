@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { tickets_list } from '../tickets';
+import { TicketService } from '../ticket.service';
 
 @Component({
   selector: 'app-import-ticket',
@@ -13,9 +14,8 @@ export class ImportTicketComponent {
   group = { }
  
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder, private ts:TicketService){
     this.importPoints = Object.keys(tickets_list[1])
-    console.log(this.importPoints)
     
    this.importPoints.forEach(opt=>{
     const obj: any = {}
@@ -34,8 +34,10 @@ export class ImportTicketComponent {
 
   onSubmit(){
     
-
-    console.log(this.importForm)
+    
+    console.log(this.importForm.value)
+    this.ts.addTicket(this.importForm.value)
+    this.importForm.reset()
   }
 
 

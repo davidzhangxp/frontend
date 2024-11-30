@@ -76,10 +76,10 @@ export const title_list = [
     {value:'part_position',checked:true},
     {value:'error_description',checked:true},
     {value:'feedback',checked:false},
-    {value:'tech',checked:false},
+    {value:'tech',checked:true},
     {value:'repair_date',checked:false},
     {value:'period',checked:false},
-    {value:'status',checked:false},
+    {value:'status',checked:true},
     {value:'requester',checked:true},
     {value:'notes',checked:true},
 ]

@@ -23,7 +23,7 @@ export class MainbarComponent {
     //get ticket list from ticketservice from backend
 
     this.ts.getTickets().subscribe((data)=>{this.tickets=data})
-    this.ticketlist = this.tickets
+    this.ticketlist = this.tickets.sort((a,b)=>b.id-a.id)
 
     //push all options which is checked to a new array
     this.options.filter((option)=>option.checked == true).map((item)=>{this.checkedoptions.push(item.value)})
