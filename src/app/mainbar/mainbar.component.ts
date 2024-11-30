@@ -65,8 +65,8 @@ export class MainbarComponent {
 
     }
     if(this.filterForm.value['id'] ){
-      this.tickets = this.ticketlist.filter((item)=>item.id == this.filterForm.value['id'])
-      console.log(this.tickets)
+      this.tickets = this.ticketlist.filter((item)=>item.ticket_number == this.filterForm.value['id'])
+      
     }
     if(this.filterForm.value['content'] ){
       this.tickets = this.ticketlist.filter((item)=>item.server_sn === this.filterForm.value['content'])

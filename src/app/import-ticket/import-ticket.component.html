@@ -1,9 +1,9 @@
 <p>import-ticket works!</p>
 <form class="checkbar" [formGroup]="importForm" (ngSubmit)="onSubmit()">
-    <!-- <div class="bar_item" *ngFor="let option of importPoints">
+    <div class="bar_item" *ngFor="let option of importPoints">
         <label>{{ option }}</label>
-      <input type="text" formControlName="">
-    </div> -->
+      <input type="text" formControlName={{option}}>
+    </div>
   
     <button type="submit">Submit</button>
-  </form>
+</form>

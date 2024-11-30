@@ -10,23 +10,26 @@ import { tickets_list } from '../tickets';
 export class ImportTicketComponent {
   importPoints:String[] = []
   importForm!: FormGroup;
-  group = {
-    status: new FormControl(''),
-    id: new FormControl(''),
-    content: new FormControl(''),
-    tech: new FormControl(''),
-    date: new FormControl('')
-
-  }
+  group = { }
+ 
 
   constructor(private fb:FormBuilder){
     this.importPoints = Object.keys(tickets_list[1])
     console.log(this.importPoints)
     
-
+   this.importPoints.forEach(opt=>{
+    const obj: any = {}
+    obj[opt as keyof typeof obj] = new FormControl('')
+    this.group = {...obj,...this.group}
+   })
     this.importForm = this.fb.group(this.group)
+  
+
     
   }
+
+  
+
 
 
   onSubmit(){
