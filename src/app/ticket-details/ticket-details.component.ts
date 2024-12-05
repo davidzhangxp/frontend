@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from '../ticket.service';
-import { Ticket,tickets_list } from '../tickets';
+
 
 
 @Component({
@@ -23,16 +23,16 @@ export class TicketDetailsComponent {
       this.ticketInfo = data.find( item => item.id === this.ticketId)
     })
     
-    console.log(this.ticketId,this.ticketInfo)
+    
   }
 
   deleteTicket(){
     if(this.ticketInfo){
-      console.log(this.ticketInfo._id)
+      //pass ticket database id to backend and delete this ticket from db
       this.ts.deleteTicket(this.ticketInfo._id)
     }
     
-    
+    //after delete this ticket, jump back to main page
     this.router.navigate(['/'])
   }
 

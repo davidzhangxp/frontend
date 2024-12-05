@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { formatDate } from '@angular/common';
 import { FormArray, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { title_list } from '../tickets';
 import { TicketService } from '../ticket.service';
@@ -38,7 +39,8 @@ export class MainbarComponent {
       id: new FormControl(''),
       content: new FormControl(''),
       tech: new FormControl(''),
-      date: new FormControl('')
+      date1: new FormControl(''),
+      date2: new FormControl('')
     })
 
   }
@@ -71,8 +73,12 @@ export class MainbarComponent {
     if(this.filterForm.value['content'] ){
       this.tickets = this.ticketlist.filter((item)=>item.server_sn === this.filterForm.value['content'])
       }
+    if(this.filterForm.value['date1'] && this.filterForm.value['date2'])  {
+      console.log(formatDate(this.filterForm.value['date1'],'MM/dd/yyyy',"en-US"),new Date(this.filterForm.value['date2']),new Date(this.tickets[0].start_date))
+      this.tickets = this.ticketlist.filter((item)=> new Date(item.start_date) >= new Date(this.filterForm.value['date1']) && new Date(item.start_date) <= new Date(this.filterForm.value['date2']))
+    }
     if(this.filterForm.value['tech'] !== '' && this.filterForm.value['tech'] !== null){this.tickets = this.ticketlist.filter((item)=>item.tech.toLowerCase().includes(this.filterForm.value['tech'].toLowerCase()))}
-    if(this.filterForm.value['status'] == '' && this.filterForm.value['id'] == '' && this.filterForm.value['content'] == '' && this.filterForm.value['tech'] == ''){
+    if(this.filterForm.value['status'] === '' && this.filterForm.value['id'] === '' && this.filterForm.value['content'] === '' && this.filterForm.value['tech'] === '' && this.filterForm.value['date1'] === '' && this.filterForm.value['date2'] === ''){
       this.tickets = this.ticketlist
       
     }

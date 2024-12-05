@@ -41,8 +41,9 @@ export class TicketService {
   }
 
   deleteTicket(id:string){
-    this.http.delete(this.apiurl + 'deleteticket' + '/' + id).subscribe((data)=>{}
-    )
+    //here will cause 410 gone issue,but if there's no subscribe, the main page couldn't fresh
+    this.http.delete(this.apiurl + 'deleteticket' + '/' + id).subscribe(data=>{})
+    
   }
 
   getTickets(){
