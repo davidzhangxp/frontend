@@ -40,6 +40,11 @@ export class TicketService {
     })
   }
 
+  deleteTicket(id:string){
+    this.http.delete(this.apiurl + 'deleteticket' + '/' + id).subscribe((data)=>{}
+    )
+  }
+
   getTickets(){
     return this.http.get<any[]>(this.apiurl + 'tickets')
   }

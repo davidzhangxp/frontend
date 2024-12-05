@@ -16,30 +16,41 @@ export class TicketListComponent {
   @Input() tickets:any[] | undefined
 
   fileName = "Breakfix_report.xlsx"
-
+  p: number = 1;
+  itemsNumber:number = 20
+  
+ 
   // report_heads:string[] = []
   // tickets:any =tickets_list
 
   constructor(private ts: TicketService, private router: Router){
-    // this.ts.getTickets().subscribe((data)=>{this.tickets=data})
+
+  }
+  ngOnInit(){
+
   }
 
   addticket(){
     this.router.navigate(['/import'])
+    
   }
-  exportexcel(){
+  exporttabletoexcel(){
          /* pass here the table id */
-         let element = document.getElementById('excel-table');
-         const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+        let element = document.getElementById('excel-table');
+        const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+        // if(this.tickets){
+        //  const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.tickets)}
       
          /* generate workbook and add the worksheet */
          const wb: XLSX.WorkBook = XLSX.utils.book_new();
          XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-      
+        
          /* save to file */  
          XLSX.writeFile(wb, this.fileName);
+        
 
   }
+
   remove_ticket(id:string){
     console.log(id)
   }

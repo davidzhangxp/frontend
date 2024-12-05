@@ -22,7 +22,7 @@ export class MainbarComponent {
   constructor(private formBuilder: FormBuilder, private ts:TicketService) {
     //get ticket list from ticketservice from backend
 
-    this.ts.getTickets().subscribe((data)=>{this.tickets=data})
+    this.ts.getTickets().subscribe((data)=>{this.tickets=data.sort((a,b)=>b.id-a.id)})
     this.ticketlist = this.tickets.sort((a,b)=>b.id-a.id)
 
     //push all options which is checked to a new array

@@ -51,3 +51,19 @@
   #excel-table td {
     font-size: 12px;
   }
+
+  pagination-controls{
+    float: right;
+  }
+  .table-foot{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .table-foot input{
+    margin: 5px 2px;
+    padding:0;
+    text-align: center;
+    height: 30px;
+    width: 60px;
+    font-size: 15px;
+  }

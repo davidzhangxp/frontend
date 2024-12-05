@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from '../ticket.service';
 import { Ticket,tickets_list } from '../tickets';
+
 
 @Component({
   selector: 'app-ticket-details',
@@ -10,18 +11,29 @@ import { Ticket,tickets_list } from '../tickets';
 })
 export class TicketDetailsComponent {
   ticketInfo:any
+  ticketId:string = ''
 
-  constructor(private route:ActivatedRoute, private ts:TicketService){}
+  constructor(private route:ActivatedRoute, private ts:TicketService, private router:Router){}
 
   ngOnInit():void{
     const params = this.route.snapshot.paramMap
 
-    const ticketId = String(params.get('ticketid'))
+    this.ticketId = String(params.get('ticketid'))
     this.ts.getTickets().subscribe(data => {
-      this.ticketInfo = data.find( item => item.id === ticketId)
+      this.ticketInfo = data.find( item => item.id === this.ticketId)
     })
     
-    console.log(ticketId,this.ticketInfo)
+    console.log(this.ticketId,this.ticketInfo)
+  }
+
+  deleteTicket(){
+    if(this.ticketInfo){
+      console.log(this.ticketInfo._id)
+      this.ts.deleteTicket(this.ticketInfo._id)
+    }
+    
+    
+    this.router.navigate(['/'])
   }
 
 }

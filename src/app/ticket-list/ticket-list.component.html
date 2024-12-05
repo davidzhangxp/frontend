@@ -3,9 +3,9 @@
   
     <button (click)="addticket()">Import ticket</button>
 
-
+    <button (click)="exporttabletoexcel()">Export report</button>
   
-    <button (click)="exportexcel()">Export report</button>
+    
   
 </div>
 
@@ -45,15 +45,15 @@
           <th *ngIf="report_heads.includes('notes')">Notes</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let data of tickets">
+      <tbody *ngIf="tickets">
+        <tr *ngFor="let data of tickets | paginate: { itemsPerPage: itemsNumber, currentPage: p }" >
           <th scope="row">{{data.id}}</th>
           <!-- <td *ngFor="let item of data | keyvalue">{{item.value}}</td> -->
           <td *ngIf="report_heads.includes('ticket_number')"><a [title]="data.ticket_number + 'details'" [routerLink]="['/tickets', data.id]">{{data.ticket_number}}</a></td>
           <td *ngIf="report_heads.includes('server_sn')">{{data.server_sn}}</td>
           <td *ngIf="report_heads.includes('ip')">{{data.ip}}</td>
-          <td *ngIf="report_heads.includes('start_date')">{{data.start_date}}</td>
-          <td *ngIf="report_heads.includes('close_date')">{{data.close_date}}</td>
+          <td *ngIf="report_heads.includes('start_date')">{{data.start_date | date}}</td>
+          <td *ngIf="report_heads.includes('close_date')">{{data.close_date | date}}</td>
           <td *ngIf="report_heads.includes('product_name')">{{data.product_name}}</td>
           <td *ngIf="report_heads.includes('model')">{{data.model}}</td>
           <td *ngIf="report_heads.includes('location')">{{data.location}}</td>
@@ -71,7 +71,7 @@
           <td *ngIf="report_heads.includes('error_description')">{{data.error_description}}</td>
           <td *ngIf="report_heads.includes('feedback')">{{data.feedback}}</td>
           <td *ngIf="report_heads.includes('tech')">{{data.tech}}</td>
-          <td *ngIf="report_heads.includes('repair_date')">{{data.repair_date}}</td>
+          <td *ngIf="report_heads.includes('repair_date')">{{data.repair_date | date}}</td>
           <td *ngIf="report_heads.includes('period')">{{data.period}}</td>
           <td *ngIf="report_heads.includes('status')">{{data.status}}</td>
           <td *ngIf="report_heads.includes('requester')">{{data.requester}}</td>
@@ -84,6 +84,14 @@
         </tr>
         
       </tbody>
-    </table>
-    </div>
-
+      
+  </table>
+  <div class="table-foot">
+    <input [(ngModel)]="itemsNumber" >
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    
+  </div>
+</div>
+   
+               
+    
