@@ -7,6 +7,7 @@ import { SettingComponent } from './setting/setting.component';
 import { MainbarComponent } from './mainbar/mainbar.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { ImportTicketComponent } from './import-ticket/import-ticket.component';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 
 const routes: Routes = [
   {path:'', component:MainbarComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'register', component:RegisterComponent},
   {path:'setting', component:SettingComponent},
   {path:'tickets/:ticketid',component:TicketDetailsComponent},
-  {path:'import', component:ImportTicketComponent}
+  {path:'import', component:ImportTicketComponent},
+  {path:'edit/:ticketid', component: EditTicketComponent}
 ];
 
 @NgModule({

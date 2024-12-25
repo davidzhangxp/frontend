@@ -16,6 +16,7 @@ import { MainbarComponent } from './mainbar/mainbar.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { ImportTicketComponent } from './import-ticket/import-ticket.component';
 import { CommonModule } from '@angular/common';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 
 
 
@@ -29,7 +30,8 @@ import { CommonModule } from '@angular/common';
     SettingComponent,
     MainbarComponent,
     TicketDetailsComponent,
-    ImportTicketComponent
+    ImportTicketComponent,
+    EditTicketComponent
   ],
   imports: [
     CommonModule,

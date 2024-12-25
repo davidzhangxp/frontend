@@ -46,6 +46,7 @@
         </tr>
       </thead>
       <tbody *ngIf="tickets">
+        <!-- //use paginate will cause error if you don't set a condition ngif tickets is exist -->
         <tr *ngFor="let data of tickets | paginate: { itemsPerPage: itemsNumber, currentPage: p }" >
           <th scope="row">{{data.id}}</th>
           <!-- <td *ngFor="let item of data | keyvalue">{{item.value}}</td> -->
@@ -87,7 +88,7 @@
       
   </table>
   <div class="table-foot">
-    <input [(ngModel)]="itemsNumber" >
+    <span><input [(ngModel)]="itemsNumber" >/page</span>
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
     
   </div>

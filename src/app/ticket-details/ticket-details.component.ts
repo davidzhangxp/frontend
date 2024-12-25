@@ -36,4 +36,15 @@ export class TicketDetailsComponent {
     this.router.navigate(['/'])
   }
 
+  editTicket(){
+    this.router.navigate(['/edit/' + this.ticketId])
+  }
+  openNewTab() {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['/edit/' + this.ticketId])
+    );
+  
+    window.open(url, '_blank');
+  }
 }
+
