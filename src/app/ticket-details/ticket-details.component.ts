@@ -39,6 +39,7 @@ export class TicketDetailsComponent {
   editTicket(){
     this.router.navigate(['/edit/' + this.ticketId])
   }
+  //navigate to a new tab
   openNewTab() {
     const url = this.router.serializeUrl(
       this.router.createUrlTree(['/edit/' + this.ticketId])

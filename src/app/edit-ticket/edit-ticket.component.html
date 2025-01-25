@@ -1,1 +1,22 @@
 <p>edit-ticket works!</p>
+
+<div *ngIf="ticketInfo">
+    
+        <div class="bar-item" *ngFor="let item of ticketInfo | keyvalue">
+            <div *ngIf="item.key === 'status'">
+                <label>{{ item.key }}</label>
+                <input type="text" [(ngModel)]="status">
+            </div>
+            <div *ngIf="item.key === 'repair_date'">
+                <label>{{ item.key }}</label>
+                <input type="text" [(ngModel)]="repair_date">
+            </div>
+            <div *ngIf="item.key !== 'status' && item.key !== 'repair_date'">
+                {{ item.key }}: {{item.value}}
+            </div>
+
+        </div>
+      
+        <button type="submit" (click)="editTicket()">Submit</button>
+
+</div>    

@@ -15,9 +15,13 @@ export class SettingComponent {
     this.ts.getTickets().subscribe((data)=>{this.tickets=data.sort((a,b)=>b.id-a.id)})
   }
 
-  uploadexcel(event:any){
+  selectexcel(event:any){
     this.ts.onFileChange(event)
   }
+  uploadexcel(){
+    this.ts.uploadExcelData()
+  }
+
   exportrawdatatoexcel(){
   
     if(this.tickets){

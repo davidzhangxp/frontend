@@ -26,9 +26,7 @@ export class TicketListComponent {
   constructor(private ts: TicketService, private router: Router){
 
   }
-  ngOnInit(){
 
-  }
 
   addticket(){
     this.router.navigate(['/import'])
@@ -38,8 +36,7 @@ export class TicketListComponent {
          /* pass here the table id */
         let element = document.getElementById('excel-table');
         const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
-        // if(this.tickets){
-        //  const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.tickets)}
+        
       
          /* generate workbook and add the worksheet */
          const wb: XLSX.WorkBook = XLSX.utils.book_new();

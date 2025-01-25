@@ -2,7 +2,8 @@
     <p>Upload Excel File to app:</p>
 </div>
 <div class="setting_btn">
-    <input type="file" (change)="uploadexcel($event)" accept=".xlsx, .xls">
+    <input type="file" (change)="selectexcel($event)" accept=".xlsx, .xls">
+    <button (click)="uploadexcel()">Upload</button>
   </div>
 <div class="setting_btn">
     <button (click)="exportrawdatatoexcel()">Download raw data</button>

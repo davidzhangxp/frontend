@@ -16,7 +16,7 @@ export class ImportTicketComponent {
 
   constructor(private fb:FormBuilder, private ts:TicketService){
     this.importPoints = Object.keys(tickets_list[1])
-    
+    //generate a new form with empty formcontrol
    this.importPoints.forEach(opt=>{
     const obj: any = {}
     obj[opt as keyof typeof obj] = new FormControl('')
@@ -34,8 +34,6 @@ export class ImportTicketComponent {
 
   onSubmit(){
     
-    
-    console.log(this.importForm.value)
     this.ts.addTicket(this.importForm.value)
     this.importForm.reset()
   }
